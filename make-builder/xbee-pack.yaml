@@ -1,0 +1,24 @@
+schema-version: 1.0
+
+type: builder
+
+
+const:
+  srcDir: /usr/src
+  exportDir: /opt/make
+
+provision:
+  - url:
+      from: https://ftp.gnu.org/gnu/make/make-{% version %}.tar.gz
+      todir: "{% srcDir %}"
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr
+        - make
+#        - make check
+        - make install DESTDIR={% exportDir %}
+      directory: "{% srcDir %}/make-{% version %}"
+  - export: "{% exportDir %}"
+
