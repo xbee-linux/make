@@ -8,13 +8,13 @@ description: |
   programs:
   make: Automatically determines which pieces of a package need to be (re)compiled and then issues the relevant commands
 
-in:
+var:
   version: 4.3
 
 provision:
   - url:
-      from: https://ftp.gnu.org/gnu/make/make-{% version %}.tar.gz
-      todir: "{% xbeeSrc %}"
+      from: https://ftp.gnu.org/gnu/make/make-{{ .version }}.tar.gz
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
@@ -22,7 +22,7 @@ build:
         - ./configure --prefix=/usr
         - make
 #        - make check
-        - make install DESTDIR={% xbeeOut %}
-      directory: "{% xbeeSrc %}/make-{% version %}"
+        - make install DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/make-{{ .version }}"
 
 
