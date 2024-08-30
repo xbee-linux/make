@@ -9,7 +9,8 @@ description: |
   make: Automatically determines which pieces of a package need to be (re)compiled and then issues the relevant commands
 
 var:
-  version: 4.3
+  xbee:
+    version: 4.3
 
 provision:
   url: https://ftp.gnu.org/gnu/make/make-{{ .version }}.tar.gz
