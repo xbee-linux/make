@@ -13,7 +13,7 @@ var:
     version: 4.3
 
 provision:
-  url: https://ftp.gnu.org/gnu/make/make-{{ .version }}.tar.gz
+  url: https://ftp.gnu.org/gnu/make/make-{{ .xbee.version }}.tar.gz
 
 build:
   - shell:
@@ -22,6 +22,6 @@ build:
         - make
 #        - make check
         - make install DESTDIR={{ .xbee.out }}
-      directory: "{{ .xbee.src }}/make-{{ .version }}"
+      directory: "{{ .xbee.src }}/make-{{ .xbee.version }}"
 
 
